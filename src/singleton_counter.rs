@@ -18,6 +18,6 @@ impl SingletonCounter {
     }
 
     pub fn add(&mut self, num: usize) {
-        self.count = num;
+        self.count += num;
     }
 }
