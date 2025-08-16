@@ -38,4 +38,9 @@ mod tests {
         let counter2 = SingletonCounter::get();
         assert!(std::ptr::eq(counter1, counter2));
     }
+
+    // TODO doctest にする
+    // fn test_counter_is_not_generate_to_literals() {
+    //     let _counter = SingletonCounter { count: 0, _private: Private };
+    // }
 }
