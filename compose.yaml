@@ -1,0 +1,9 @@
+services:
+  rust-app:
+    build: .
+    volumes:
+      - type: bind
+        source: ./application
+        target: /application
+    working_dir: /application
+    command: cargo test
