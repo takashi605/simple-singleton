@@ -6,4 +6,4 @@ services:
         source: ./application
         target: /application
     working_dir: /application
-    command: cargo test
+    tty: true
