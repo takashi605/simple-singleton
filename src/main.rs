@@ -1,29 +1,9 @@
-use std::sync::{LazyLock, Mutex};
+mod singleton_counter;
+
+use singleton_counter::SingletonCounter;
 
 fn main() {
     println!("これはシングルトンパターンの学習用プロジェクトです。テストを実行して、シングルトンの動作を確認してください。");
-}
-
-struct SingletonCounter {
-    count: usize,
-}
-impl SingletonCounter {
-    fn count(&self) -> usize {
-        self.count
-    }
-
-    fn get() -> &'static Mutex<SingletonCounter> {
-        static INSTANCE: LazyLock<Mutex<SingletonCounter>> = LazyLock::new(|| {
-            Mutex::new(
-                SingletonCounter { count: 0 }
-            )
-        });
-        &INSTANCE
-    }
-
-    fn add(&mut self, num: usize) {
-        self.count = num;
-    }
 }
 
 #[cfg(test)]
