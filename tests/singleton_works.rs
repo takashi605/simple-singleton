@@ -1,7 +1,14 @@
 use simple_singleton::SingletonCounter;
 
 #[test]
-fn test_count_state_is_shared() {
+fn counters_are_pointing_to_the_same_instance() {
+    let counter1 = SingletonCounter::get();
+    let counter2 = SingletonCounter::get();
+    assert!(std::ptr::eq(counter1, counter2));
+}
+
+#[test]
+fn count_state_is_shared() {
     {
         let counter = SingletonCounter::get().lock().unwrap();
         let count = counter.count;
@@ -20,11 +27,4 @@ fn test_count_state_is_shared() {
         let count = counter.count;
         assert_eq!(count, 1);
     }
-}
-
-#[test]
-fn test_counter_is_singleton() {
-    let counter1 = SingletonCounter::get();
-    let counter2 = SingletonCounter::get();
-    assert!(std::ptr::eq(counter1, counter2));
 }
