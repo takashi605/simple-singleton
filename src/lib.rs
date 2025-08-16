@@ -2,10 +2,6 @@ mod singleton_counter;
 
 use singleton_counter::SingletonCounter;
 
-fn main() {
-    println!("これはシングルトンパターンの学習用プロジェクトです。テストを実行して、シングルトンの動作を確認してください。");
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
