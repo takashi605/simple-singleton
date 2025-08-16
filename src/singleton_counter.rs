@@ -1,5 +1,12 @@
 use std::sync::{LazyLock, Mutex};
 
+/// この構造体はシングルトンパターンを実装したカウンターです。
+/// 外部から直接リテラル生成ができないようになっています。
+/// 
+/// ```rust,compile_fail
+/// use simple_singleton::SingletonCounter;
+/// let _counter = SingletonCounter { count: 0, _private: Private };
+/// ```
 pub struct SingletonCounter {
     pub count: usize,
 
