@@ -10,20 +10,20 @@ mod tests {
     fn test_count_state_is_shared() {
         {
             let counter = SingletonCounter::get().lock().unwrap();
-            let count = counter.count();
+            let count = counter.count;
             assert_eq!(count, 0);
         }
 
         {
             let mut counter = SingletonCounter::get().lock().unwrap();
             counter.add(1);
-            let count = counter.count();
+            let count = counter.count;
             assert_eq!(count, 1);
         }
 
         {
             let counter = SingletonCounter::get().lock().unwrap();
-            let count = counter.count();
+            let count = counter.count;
             assert_eq!(count, 1);
         }
     }
